@@ -9,7 +9,7 @@ import lombok.*;
 @Setter
 @Builder
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class Keyword {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

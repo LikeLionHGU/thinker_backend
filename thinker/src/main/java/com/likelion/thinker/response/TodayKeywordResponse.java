@@ -28,6 +28,7 @@ public class TodayKeywordResponse {
                 .firstKeyword(todayKeywordDto.getFirstKeyword())
                 .secondKeyword(todayKeywordDto.getSecondKeyword())
                 .thirdKeyword(todayKeywordDto.getThirdKeyword())
+                .todayKeywordId(todayKeywordDto.getTodayKeywordId())
                 .build();
     }
 
