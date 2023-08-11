@@ -7,4 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class PostRequest {
+    private String title;
+
+    private String content;
 }
