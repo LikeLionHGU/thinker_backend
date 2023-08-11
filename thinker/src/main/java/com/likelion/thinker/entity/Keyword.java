@@ -1,5 +1,6 @@
 package com.likelion.thinker.entity;
 
+import com.likelion.thinker.dto.KeywordDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,4 +19,10 @@ public class Keyword {
     private Long keywordId;
 
     private String name;
+
+    public static Keyword toAdd(KeywordDto keywordDto) {
+        return Keyword.builder()
+                .name(keywordDto.getName())
+                .build();
+    }
 }
