@@ -1,6 +1,5 @@
 package com.likelion.thinker.dto;
 
-import com.likelion.thinker.entity.Member;
 import com.likelion.thinker.entity.Post;
 import com.likelion.thinker.request.PostRequest;
 import lombok.*;
@@ -42,10 +41,18 @@ public class PostDto {
                 .title(post.getTitle())
                 .content(post.getContent())
                 .date(post.getDate())
-                .memberDto(MemberDto.toResponse(post.getMember()))
+                .memberDto(MemberDto.toPostResponse(post.getMember()))
                 .postLikeDtoList(post.getPostLikeList().stream().map(PostLikeDto::toResponse).collect(Collectors.toList()))
                 .commentDtoList(post.getCommentList().stream().map(CommentDto::toResponse).collect(Collectors.toList()))
                 .build();
+    }
 
+    public static PostDto toMemberResponse(Post post) {
+        return PostDto.builder()
+                .postId(post.getPostId())
+                .title(post.getTitle())
+                .date(post.getDate())
+                .memberDto(MemberDto.toMemberResponse(post.getMember()))
+                .build();
     }
 }

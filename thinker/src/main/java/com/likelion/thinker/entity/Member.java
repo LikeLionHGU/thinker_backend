@@ -1,6 +1,7 @@
 package com.likelion.thinker.entity;
 
 import com.likelion.thinker.controller.CommentController;
+import com.likelion.thinker.dto.MemberDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,4 +33,11 @@ public class Member {
     private String name;
 
     private String email;
+
+    public static Member toAdd(MemberDto memberDto) {
+        return Member.builder()
+                .name(memberDto.getName())
+                .email(memberDto.getEmail())
+                .build();
+    }
 }

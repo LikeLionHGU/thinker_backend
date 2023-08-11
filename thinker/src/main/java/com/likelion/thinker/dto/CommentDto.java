@@ -23,8 +23,16 @@ public class CommentDto {
     public static CommentDto toResponse(Comment comment) {
         return CommentDto.builder()
                 .commentId(comment.getCommentId())
-                .memberDto(MemberDto.toResponse(comment.getMember()))
+                .memberDto(MemberDto.toPostResponse(comment.getMember()))
                 .postDto(PostDto.toResponse(comment.getPost()))
+                .commentLikeDtoList(comment.getCommentLikeList().stream().map(CommentLikeDto::toResponse).collect(Collectors.toList()))
+                .build();
+    }
+
+    public static CommentDto toMemberResponse(Comment comment) {
+        return CommentDto.builder()
+                .commentId(comment.getCommentId())
+                .postDto(PostDto.toMemberResponse(comment.getPost()))
                 .commentLikeDtoList(comment.getCommentLikeList().stream().map(CommentLikeDto::toResponse).collect(Collectors.toList()))
                 .build();
     }
