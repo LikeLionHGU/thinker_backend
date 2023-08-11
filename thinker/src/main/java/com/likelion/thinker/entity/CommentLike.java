@@ -15,8 +15,17 @@ public class CommentLike {
     private Long commentLikeId;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "memberId")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "commentId")
     private Comment comment;
+
+    public static CommentLike toAdd(Member member, Comment comment) {
+        return CommentLike.builder()
+                .member(member)
+                .comment(comment)
+                .build();
+    }
 }

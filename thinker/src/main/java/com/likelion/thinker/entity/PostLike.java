@@ -15,8 +15,17 @@ public class PostLike {
     private Long postLikeId;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "postId")
     private Post post;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "memberId")
     private Member member;
+
+    public static PostLike toAdd(Member member, Post post) {
+        return PostLike.builder()
+                .post(post)
+                .member(member)
+                .build();
+    }
 }
