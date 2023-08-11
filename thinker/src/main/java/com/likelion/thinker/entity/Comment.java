@@ -5,6 +5,7 @@ import com.likelion.thinker.dto.PostDto;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,8 +25,8 @@ public class Comment {
     @ManyToOne(fetch = FetchType.LAZY)
     private Post post;
 
-    @OneToMany(mappedBy = "commentLike", cascade = CascadeType.ALL)
-    private List<CommentLike> commentLikeList;
+    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL)
+    private List<CommentLike> commentLikeList = new ArrayList<CommentLike>();
 
     private String content;
 

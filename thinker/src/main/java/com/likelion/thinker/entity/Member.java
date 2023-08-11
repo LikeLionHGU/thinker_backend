@@ -5,6 +5,7 @@ import com.likelion.thinker.dto.MemberDto;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,17 +19,17 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
 
-    @OneToMany(mappedBy = "postLike", cascade = CascadeType.ALL)
-    private List<PostLike> postLikeList;
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<PostLike> postLikeList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "commentLike", cascade = CascadeType.ALL)
-    private List<CommentLike> commentLikeList;
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<CommentLike> commentLikeList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<Post> postList;
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Post> postList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL)
-    private List<Comment> commentList;
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Comment> commentList = new ArrayList<>();
 
     private String name;
 
