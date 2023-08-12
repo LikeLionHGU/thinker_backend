@@ -21,8 +21,8 @@ public class CommentService {
 
     @Transactional
     public Long addComment(Long memberId, Long postId, CommentDto commentDto) {
-        Post post = postRepository.getById(postId);
-        Member member = memberRepository.getById(memberId);
+        Post post = postRepository.findById(postId).orElse(null);
+        Member member = memberRepository.findById(memberId).orElse(null);
         Comment comment = commentRepository.save(Comment.toAdd(commentDto, member, post));
 
         return comment.getCommentId();

@@ -23,14 +23,14 @@ public class PostService {
 
     @Transactional
     public Long addPost(Long memberId, PostDto postDto) {
-        Post post = postRepository.save(Post.addPost(postDto, memberRepository.getById(memberId)));
+        Post post = postRepository.save(Post.addPost(postDto, memberRepository.findById(memberId).orElse(null)));
 
         return post.getPostId();
     }
 
     @Transactional
     public PostDto getPost(Long postId) {
-        Post post = postRepository.getById(postId);
+        Post post = postRepository.findById(postId).orElse(null);
         PostDto postDto = PostDto.toResponse(post);
 
         return postDto;

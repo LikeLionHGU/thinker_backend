@@ -43,20 +43,4 @@ public class KeywordService {
 
         return keywordDtoList;
     }
-
-    public static <T> List<T> getRandomElements(List<T> list, int count) {
-        List<T> result = new ArrayList<>();
-        Random rand = new Random();
-
-        while (result.size() < count) {
-            int randomIndex = rand.nextInt(list.size());
-            T randomItem = list.get(randomIndex);
-
-            if (!result.contains(randomItem)) {
-                result.add(randomItem);
-            }
-        }
-
-        return result;
-    }
 }

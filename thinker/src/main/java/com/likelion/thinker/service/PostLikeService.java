@@ -23,8 +23,8 @@ public class PostLikeService {
 
     @Transactional
     public Long addPostLike(Long memberId, Long postId) {
-        Post post = postRepository.getById(postId);
-        Member member = memberRepository.getById(memberId);
+        Post post = postRepository.findById(postId).orElse(null);
+        Member member = memberRepository.findById(memberId).orElse(null);
         PostLike postLike;
 
         if(postLikeRepository.findPostLikeByMemberIdAndPostId(memberId, postId) == null) {

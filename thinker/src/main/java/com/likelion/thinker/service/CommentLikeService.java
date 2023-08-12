@@ -20,8 +20,8 @@ public class CommentLikeService {
 
     @Transactional
     public Long addCommentLike(Long memberId, Long commentId) {
-        Member member = memberRepository.getById(memberId);
-        Comment comment = commentRepository.getById(commentId);
+        Member member = memberRepository.findById(memberId).orElse(null);
+        Comment comment = commentRepository.findById(commentId).orElse(null);
         CommentLike commentLike = null;
 
         if(commentLikeRepository.findCommentLikeByMemberIdAndCommentId(memberId, commentId) == null) {
@@ -43,8 +43,5 @@ public class CommentLikeService {
         } else {
             return null;
         }
-
-
-
     }
 }
