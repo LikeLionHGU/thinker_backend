@@ -4,8 +4,9 @@ import lombok.*;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 public class PostRequest {
     private String title;
 

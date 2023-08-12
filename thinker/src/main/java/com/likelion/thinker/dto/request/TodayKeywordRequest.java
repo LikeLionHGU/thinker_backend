@@ -1,14 +1,14 @@
 package com.likelion.thinker.dto.request;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class TodayKeywordRequest {
     private LocalDateTime date;
 
