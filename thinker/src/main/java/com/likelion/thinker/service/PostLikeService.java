@@ -25,18 +25,27 @@ public class PostLikeService {
     public Long addPostLike(Long memberId, Long postId) {
         Post post = postRepository.getById(postId);
         Member member = memberRepository.getById(memberId);
-        PostLike postLike = postLikeRepository.save(PostLike.toAdd(member, post));
+        PostLike postLike;
 
-        return postLike.getPostLikeId();
+        if(postLikeRepository.findPostLikeByMemberIdAndPostId(memberId, postId) == null) {
+            postLike = postLikeRepository.save(PostLike.toAdd(member, post));
+            return postLike.getPostLikeId();
+        } else {
+            return null;
+        }
     }
 
     @Transactional
     public Long deletePostLike(Long memberId, Long postId) {
         PostLike postLike = postLikeRepository.findPostLikeByMemberIdAndPostId(memberId, postId);
-        Long responseId = postLike.getPostLikeId();
 
-        postLikeRepository.delete(postLike);
+        if(postLike != null) {
+            Long responseId = postLike.getPostLikeId();
+            postLikeRepository.delete(postLike);
 
-        return responseId;
+            return responseId;
+        } else {
+            return null;
+        }
     }
 }

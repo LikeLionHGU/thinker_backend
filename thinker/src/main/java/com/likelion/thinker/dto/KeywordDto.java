@@ -1,7 +1,7 @@
 package com.likelion.thinker.dto;
 
 import com.likelion.thinker.entity.Keyword;
-import com.likelion.thinker.request.KeywordRequest;
+import com.likelion.thinker.dto.request.KeywordRequest;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

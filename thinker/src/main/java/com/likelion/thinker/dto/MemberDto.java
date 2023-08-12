@@ -1,9 +1,8 @@
 package com.likelion.thinker.dto;
 
+import com.likelion.thinker.dto.response.postLike.PostLikeDto;
 import com.likelion.thinker.entity.*;
-import com.likelion.thinker.request.MemberRequest;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.OneToMany;
+import com.likelion.thinker.dto.request.MemberRequest;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -40,7 +39,11 @@ public class MemberDto {
     public static MemberDto toMemberResponse(Member member) {
         return MemberDto.builder()
                 .name(member.getName())
+                .email(member.getEmail())
                 .memberId(member.getMemberId())
+                .postLikeDtoList(member.getPostLikeList().stream().map(PostLikeDto::toMemberResponse).collect(Collectors.toList()))
+                .postDtoList(member.getPostList().stream().map(PostDto::toMemberResponse).collect(Collectors.toList()))
+                .commentDtoList(member.getCommentList().stream().map(CommentDto::toMemberResponse).collect(Collectors.toList()))
                 .build();
     }
 

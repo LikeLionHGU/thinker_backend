@@ -1,19 +1,17 @@
-package com.likelion.thinker.response;
+package com.likelion.thinker.dto.response.post;
 
 import com.likelion.thinker.dto.MemberDto;
 import com.likelion.thinker.dto.PostDto;
-import com.likelion.thinker.dto.PostLikeDto;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
 @Builder
-@RequiredArgsConstructor
+@NoArgsConstructor
 @AllArgsConstructor
-public class AllPostResponse {
+public class PostByMemberResponse {
     private Long postId;
 
     private String title;
@@ -22,18 +20,19 @@ public class AllPostResponse {
 
     private LocalDateTime date;
 
-    private MemberDto memberDto;
+    private String writer;
 
-    private List<PostLikeDto> postLikeDtoList;
+    private Integer totalPostLikeCount;
 
-    public static AllPostResponse toResponse(PostDto postDto) {
-        return AllPostResponse.builder()
+    public static PostByMemberResponse toPostByMemberResponse(PostDto postDto) {
+        return PostByMemberResponse.builder()
                 .postId(postDto.getPostId())
                 .title(postDto.getTitle())
                 .content(postDto.getContent())
                 .date(postDto.getDate())
-                .memberDto(postDto.getMemberDto())
-                .postLikeDtoList(postDto.getPostLikeDtoList())
+                .writer(postDto.getWriter())
+                .totalPostLikeCount(postDto.getTotalPostLikeCount())
                 .build();
+
     }
 }

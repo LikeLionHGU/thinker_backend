@@ -1,9 +1,9 @@
 package com.likelion.thinker.controller;
 
 import com.likelion.thinker.dto.PostDto;
-import com.likelion.thinker.request.PostRequest;
-import com.likelion.thinker.response.APostResponse;
-import com.likelion.thinker.response.AllPostResponse;
+import com.likelion.thinker.dto.request.PostRequest;
+import com.likelion.thinker.dto.response.post.APostResponse;
+import com.likelion.thinker.dto.response.post.AllPostResponse;
 import com.likelion.thinker.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

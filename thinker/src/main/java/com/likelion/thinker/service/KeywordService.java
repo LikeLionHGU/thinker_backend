@@ -7,7 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,9 +26,37 @@ public class KeywordService {
 
     @Transactional
     public List<KeywordDto> getThreeKeyword() {
-        List<Keyword> keywordList = keywordRepository.findRandomThreeKeyword();
-        List<KeywordDto> keywordDtoList = keywordList.stream().map(KeywordDto::toResponse).collect(Collectors.toList());
+        List<Keyword> keywordList = keywordRepository.findAll();
+        List<Keyword> keywords = new ArrayList<>();
+
+        while (keywords.size() < 3) {
+            Random random = new Random();
+            int randomIndex = random.nextInt(keywordList.size());
+            Keyword randomItem = keywordList.get(randomIndex);
+
+            if (!keywords.contains(randomItem)) {
+                keywords.add(randomItem);
+            }
+        }
+
+        List<KeywordDto> keywordDtoList = keywords.stream().map(KeywordDto::toResponse).collect(Collectors.toList());
 
         return keywordDtoList;
+    }
+
+    public static <T> List<T> getRandomElements(List<T> list, int count) {
+        List<T> result = new ArrayList<>();
+        Random rand = new Random();
+
+        while (result.size() < count) {
+            int randomIndex = rand.nextInt(list.size());
+            T randomItem = list.get(randomIndex);
+
+            if (!result.contains(randomItem)) {
+                result.add(randomItem);
+            }
+        }
+
+        return result;
     }
 }

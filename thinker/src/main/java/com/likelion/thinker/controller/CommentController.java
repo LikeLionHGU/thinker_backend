@@ -1,7 +1,7 @@
 package com.likelion.thinker.controller;
 
 import com.likelion.thinker.dto.CommentDto;
-import com.likelion.thinker.request.CommentRequest;
+import com.likelion.thinker.dto.request.CommentRequest;
 import com.likelion.thinker.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

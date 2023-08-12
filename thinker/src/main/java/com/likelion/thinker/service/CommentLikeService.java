@@ -22,17 +22,29 @@ public class CommentLikeService {
     public Long addCommentLike(Long memberId, Long commentId) {
         Member member = memberRepository.getById(memberId);
         Comment comment = commentRepository.getById(commentId);
-        CommentLike commentLike = commentLikeRepository.save(CommentLike.toAdd(member, comment));
+        CommentLike commentLike = null;
 
-        return commentLike.getCommentLikeId();
+        if(commentLikeRepository.findCommentLikeByMemberIdAndCommentId(memberId, commentId) == null) {
+            commentLike = commentLikeRepository.save(CommentLike.toAdd(member, comment));
+
+            return commentLike.getCommentLikeId();
+        } else {
+            return null;
+        }
     }
 
     @Transactional
     public Long deleteCommentLike(Long memberId, Long commentId) {
         CommentLike commentLike = commentLikeRepository.findCommentLikeByMemberIdAndCommentId(memberId, commentId);
-        Long responseId = commentLike.getCommentLikeId();
-        commentLikeRepository.delete(commentLike);
+        if(commentLike != null) {
+            Long responseId = commentLike.getCommentLikeId();
+            commentLikeRepository.delete(commentLike);
+            return responseId;
+        } else {
+            return null;
+        }
 
-        return responseId;
+
+
     }
 }

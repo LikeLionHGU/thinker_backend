@@ -1,7 +1,8 @@
 package com.likelion.thinker.dto;
 
+import com.likelion.thinker.dto.response.postLike.PostLikeDto;
 import com.likelion.thinker.entity.Post;
-import com.likelion.thinker.request.PostRequest;
+import com.likelion.thinker.dto.request.PostRequest;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -24,9 +25,13 @@ public class PostDto {
 
     private MemberDto memberDto;
 
-    private List<PostLikeDto> postLikeDtoList;
+    private Integer totalPostLikeCount;
 
-    private List<CommentDto> commentDtoList;
+    private String writer;
+
+    private List<PostLikeDto> postLikeList;
+
+    private List<CommentDto> commentList;
 
     public static PostDto toAdd(PostRequest postRequest) {
         return PostDto.builder()
@@ -41,18 +46,21 @@ public class PostDto {
                 .title(post.getTitle())
                 .content(post.getContent())
                 .date(post.getDate())
+                .totalPostLikeCount(post.getPostLikeList().size())
                 .memberDto(MemberDto.toPostResponse(post.getMember()))
-                .postLikeDtoList(post.getPostLikeList().stream().map(PostLikeDto::toResponse).collect(Collectors.toList()))
-                .commentDtoList(post.getCommentList().stream().map(CommentDto::toResponse).collect(Collectors.toList()))
+                .postLikeList(post.getPostLikeList().stream().map(PostLikeDto::toResponse).collect(Collectors.toList()))
+                .commentList(post.getCommentList().stream().map(CommentDto::toResponse).collect(Collectors.toList()))
                 .build();
     }
 
     public static PostDto toMemberResponse(Post post) {
         return PostDto.builder()
+                .writer(post.getMember().getName())
                 .postId(post.getPostId())
                 .title(post.getTitle())
                 .date(post.getDate())
-                .memberDto(MemberDto.toMemberResponse(post.getMember()))
+                .content(post.getContent())
+                .totalPostLikeCount(post.getPostLikeList().size())
                 .build();
     }
 }

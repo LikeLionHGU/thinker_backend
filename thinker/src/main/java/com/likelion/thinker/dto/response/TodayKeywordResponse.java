@@ -1,4 +1,4 @@
-package com.likelion.thinker.response;
+package com.likelion.thinker.dto.response;
 
 import com.likelion.thinker.dto.TodayKeywordDto;
 import com.likelion.thinker.entity.TodayKeyword;

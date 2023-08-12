@@ -1,4 +1,4 @@
-package com.likelion.thinker.response;
+package com.likelion.thinker.dto.response;
 
 import com.likelion.thinker.dto.KeywordDto;
 import lombok.Builder;

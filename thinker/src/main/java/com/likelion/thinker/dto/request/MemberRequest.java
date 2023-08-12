@@ -1,4 +1,4 @@
-package com.likelion.thinker.request;
+package com.likelion.thinker.dto.request;
 
 import lombok.Builder;
 import lombok.Getter;

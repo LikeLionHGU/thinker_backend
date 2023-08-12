@@ -4,7 +4,6 @@ import com.likelion.thinker.dto.PostDto;
 import com.likelion.thinker.entity.Post;
 import com.likelion.thinker.repository.MemberRepository;
 import com.likelion.thinker.repository.PostRepository;
-import com.likelion.thinker.response.AllPostResponse;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

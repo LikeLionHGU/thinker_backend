@@ -23,7 +23,7 @@ public class CommentService {
     public Long addComment(Long memberId, Long postId, CommentDto commentDto) {
         Post post = postRepository.getById(postId);
         Member member = memberRepository.getById(memberId);
-        Comment comment = commentRepository.save(Comment.toAdd(commentDto,member, post));
+        Comment comment = commentRepository.save(Comment.toAdd(commentDto, member, post));
 
         return comment.getCommentId();
     }

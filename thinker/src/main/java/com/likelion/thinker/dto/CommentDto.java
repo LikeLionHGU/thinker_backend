@@ -1,7 +1,8 @@
 package com.likelion.thinker.dto;
 
+import com.likelion.thinker.dto.response.post.PostByCommentResponse;
 import com.likelion.thinker.entity.Comment;
-import com.likelion.thinker.request.CommentRequest;
+import com.likelion.thinker.dto.request.CommentRequest;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +18,7 @@ public class CommentDto {
 
     private MemberDto memberDto;
 
-    private PostDto postDto;
+    private PostByCommentResponse postDto;
 
     private List<CommentLikeDto> commentLikeDtoList;
 
@@ -25,17 +26,20 @@ public class CommentDto {
 
     public static CommentDto toResponse(Comment comment) {
         return CommentDto.builder()
+                .content(comment.getContent())
                 .commentId(comment.getCommentId())
                 .memberDto(MemberDto.toPostResponse(comment.getMember()))
-                .postDto(PostDto.toResponse(comment.getPost()))
+                .postDto(PostByCommentResponse.toPostByCommentResponse(comment.getPost()))
                 .commentLikeDtoList(comment.getCommentLikeList().stream().map(CommentLikeDto::toResponse).collect(Collectors.toList()))
                 .build();
     }
 
+
     public static CommentDto toMemberResponse(Comment comment) {
         return CommentDto.builder()
                 .commentId(comment.getCommentId())
-                .postDto(PostDto.toMemberResponse(comment.getPost()))
+                .content(comment.getContent())
+                .postDto(PostByCommentResponse.toPostByCommentResponse(comment.getPost()))
                 .commentLikeDtoList(comment.getCommentLikeList().stream().map(CommentLikeDto::toResponse).collect(Collectors.toList()))
                 .build();
     }

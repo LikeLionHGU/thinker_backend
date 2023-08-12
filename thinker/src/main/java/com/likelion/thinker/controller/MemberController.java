@@ -1,8 +1,8 @@
 package com.likelion.thinker.controller;
 
 import com.likelion.thinker.dto.MemberDto;
-import com.likelion.thinker.request.MemberRequest;
-import com.likelion.thinker.response.MemberResponse;
+import com.likelion.thinker.dto.request.MemberRequest;
+import com.likelion.thinker.dto.response.member.MemberResponse;
 import com.likelion.thinker.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

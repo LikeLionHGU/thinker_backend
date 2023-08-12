@@ -2,10 +2,10 @@ package com.likelion.thinker.controller;
 
 import com.likelion.thinker.dto.KeywordDto;
 import com.likelion.thinker.dto.TodayKeywordDto;
-import com.likelion.thinker.request.KeywordRequest;
-import com.likelion.thinker.request.TodayKeywordRequest;
-import com.likelion.thinker.response.KeywordResponse;
-import com.likelion.thinker.response.TodayKeywordResponse;
+import com.likelion.thinker.dto.request.KeywordRequest;
+import com.likelion.thinker.dto.request.TodayKeywordRequest;
+import com.likelion.thinker.dto.response.KeywordResponse;
+import com.likelion.thinker.dto.response.TodayKeywordResponse;
 import com.likelion.thinker.service.KeywordService;
 import com.likelion.thinker.service.TodayKeywordService;
 import lombok.RequiredArgsConstructor;

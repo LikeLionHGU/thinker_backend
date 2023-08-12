@@ -26,7 +26,7 @@ public class MemberService {
     @Transactional
     public MemberDto getUser(Long userId) {
         Member member = memberRepository.getById(userId);
-        MemberDto memberDto = MemberDto.toMemberResponse(member);
+        MemberDto memberDto = MemberDto.toResponse(member);
 
         return memberDto;
     }
