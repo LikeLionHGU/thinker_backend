@@ -1,6 +1,5 @@
 package com.likelion.thinker.entity;
 
-import com.likelion.thinker.controller.CommentController;
 import com.likelion.thinker.dto.MemberDto;
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,8 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Member {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long memberId;
+    private String memberId;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<PostLike> postLikeList = new ArrayList<>();
@@ -37,6 +35,7 @@ public class Member {
 
     public static Member toAdd(MemberDto memberDto) {
         return Member.builder()
+                .memberId(memberDto.getMemberId())
                 .name(memberDto.getName())
                 .email(memberDto.getEmail())
                 .build();

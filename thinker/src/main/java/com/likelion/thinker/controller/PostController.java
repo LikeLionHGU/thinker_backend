@@ -20,7 +20,7 @@ public class PostController {
 
 
     @PostMapping("/{userId}")
-    public ResponseEntity<Long> addOnePost(@PathVariable Long userId, @RequestBody PostRequest postRequest) {
+    public ResponseEntity<Long> addOnePost(@PathVariable String userId, @RequestBody PostRequest postRequest) {
         PostDto postDto = PostDto.toAdd(postRequest);
         Long postId = postService.addPost(userId, postDto);
 

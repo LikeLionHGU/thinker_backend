@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Setter
 @Builder
 public class MemberDto {
-    private Long memberId;
+    private String memberId;
 
     private String name;
 
@@ -49,6 +49,7 @@ public class MemberDto {
 
     public static MemberDto toAdd(MemberRequest memberRequest) {
         return MemberDto.builder()
+                .memberId(memberRequest.getMemberId())
                 .name(memberRequest.getName())
                 .email(memberRequest.getEmail())
                 .build();

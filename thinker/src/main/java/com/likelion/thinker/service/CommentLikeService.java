@@ -19,8 +19,8 @@ public class CommentLikeService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public Long addCommentLike(Long memberId, Long commentId) {
-        Member member = memberRepository.findById(memberId).orElse(null);
+    public Long addCommentLike(String memberId, Long commentId) {
+        Member member = memberRepository.findByMemberId(memberId);
         Comment comment = commentRepository.findById(commentId).orElse(null);
         CommentLike commentLike = null;
 
@@ -34,7 +34,7 @@ public class CommentLikeService {
     }
 
     @Transactional
-    public Long deleteCommentLike(Long memberId, Long commentId) {
+    public Long deleteCommentLike(String memberId, Long commentId) {
         CommentLike commentLike = commentLikeRepository.findCommentLikeByMemberIdAndCommentId(memberId, commentId);
         if(commentLike != null) {
             Long responseId = commentLike.getCommentLikeId();

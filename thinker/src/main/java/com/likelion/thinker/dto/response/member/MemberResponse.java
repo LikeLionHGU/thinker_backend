@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Setter
 @Builder
 public class MemberResponse {
-    private Long memberId;
+    private String memberId;
 
     private String name;
 

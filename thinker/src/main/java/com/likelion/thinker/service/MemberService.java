@@ -17,15 +17,15 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public Long addUser(MemberDto memberDto) {
+    public String addUser(MemberDto memberDto) {
         Member member = memberRepository.save(Member.toAdd(memberDto));
 
         return member.getMemberId();
     }
 
     @Transactional
-    public MemberDto getUser(Long userId) {
-        Member member = memberRepository.findById(userId).orElse(null);
+    public MemberDto getUser(String userId) {
+        Member member = memberRepository.findByMemberId(userId);
         MemberDto memberDto = MemberDto.toResponse(member);
 
         return memberDto;

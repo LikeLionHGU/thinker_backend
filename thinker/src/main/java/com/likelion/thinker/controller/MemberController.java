@@ -15,15 +15,15 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping
-    public ResponseEntity<Long> addUser(@RequestBody MemberRequest memberRequest) {
+    public ResponseEntity<String> addUser(@RequestBody MemberRequest memberRequest) {
         MemberDto memberDto = MemberDto.toAdd(memberRequest);
-        Long memberId = memberService.addUser(memberDto);
+        String memberId = memberService.addUser(memberDto);
 
         return ResponseEntity.ok(memberId);
     }
 
     @GetMapping("{userId}")
-    public ResponseEntity<MemberResponse> getUser(@PathVariable Long userId) {
+    public ResponseEntity<MemberResponse> getUser(@PathVariable String userId) {
         MemberDto memberDto = memberService.getUser(userId);
         MemberResponse memberResponse = MemberResponse.toResponse(memberDto);
 

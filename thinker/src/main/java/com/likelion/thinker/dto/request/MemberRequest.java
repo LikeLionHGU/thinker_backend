@@ -8,6 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberRequest {
+    private String memberId;
+
     private String name;
 
     private String email;

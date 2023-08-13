@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberByPostResponse {
-    private Long memberId;
+    private String memberId;
 
     private String name;
 

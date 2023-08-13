@@ -14,7 +14,7 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping("/{userId}/{postId}")
-    public ResponseEntity<Long> addComment(@PathVariable Long userId, @PathVariable Long postId, @RequestBody CommentRequest commentRequest) {
+    public ResponseEntity<Long> addComment(@PathVariable String userId, @PathVariable Long postId, @RequestBody CommentRequest commentRequest) {
         Long responseId = commentService.addComment(userId, postId, CommentDto.toAdd(commentRequest));
 
         return ResponseEntity.ok(responseId);
