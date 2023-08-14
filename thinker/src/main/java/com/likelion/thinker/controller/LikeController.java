@@ -14,28 +14,28 @@ public class LikeController {
     private final PostLikeService postLikeService;
 
     @PostMapping("/comment/{commentId}/{userId}")
-    public ResponseEntity<Long> addCommentLike(@PathVariable Long commentId, @PathVariable String userId) {
+    public ResponseEntity<Long> addCommentLike(@PathVariable Long commentId, @PathVariable Long userId) {
         Long responseId = commentLikeService.addCommentLike(userId, commentId);
 
         return ResponseEntity.ok(responseId);
     }
 
     @DeleteMapping("/comment/{commentId}/{userId}")
-    public ResponseEntity<Long> deleteCommentLike(@PathVariable Long commentId, @PathVariable String userId) {
+    public ResponseEntity<Long> deleteCommentLike(@PathVariable Long commentId, @PathVariable Long userId) {
         Long responseId = commentLikeService.deleteCommentLike(userId, commentId);
 
         return ResponseEntity.ok(responseId);
     }
 
     @PostMapping("/post/{postId}/{userId}")
-    public ResponseEntity<Long> addPostLike(@PathVariable Long postId, @PathVariable String userId) {
+    public ResponseEntity<Long> addPostLike(@PathVariable Long postId, @PathVariable Long userId) {
         Long responseId = postLikeService.addPostLike(userId, postId);
 
         return ResponseEntity.ok(responseId);
     }
 
     @DeleteMapping("post/{postId}/{userId}")
-    public ResponseEntity<Long> deletePostLike(@PathVariable Long postId, @PathVariable String userId) {
+    public ResponseEntity<Long> deletePostLike(@PathVariable Long postId, @PathVariable Long userId) {
         Long responseId = postLikeService.deletePostLike(userId, postId);
 
         return ResponseEntity.ok(responseId);

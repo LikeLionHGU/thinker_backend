@@ -20,7 +20,7 @@ public class CommentService {
     private final PostRepository postRepository;
 
     @Transactional
-    public Long addComment(String memberId, Long postId, CommentDto commentDto) {
+    public Long addComment(Long memberId, Long postId, CommentDto commentDto) {
         Post post = postRepository.findById(postId).orElse(null);
         Member member = memberRepository.findByMemberId(memberId);
         Comment comment = commentRepository.save(Comment.toAdd(commentDto, member, post));

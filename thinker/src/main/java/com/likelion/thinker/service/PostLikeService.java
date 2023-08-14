@@ -22,7 +22,7 @@ public class PostLikeService {
     private final PostLikeRepository postLikeRepository;
 
     @Transactional
-    public Long addPostLike(String memberId, Long postId) {
+    public Long addPostLike(Long memberId, Long postId) {
         Post post = postRepository.findById(postId).orElse(null);
         Member member = memberRepository.findByMemberId(memberId);
         PostLike postLike;
@@ -36,7 +36,7 @@ public class PostLikeService {
     }
 
     @Transactional
-    public Long deletePostLike(String memberId, Long postId) {
+    public Long deletePostLike(Long memberId, Long postId) {
         PostLike postLike = postLikeRepository.findPostLikeByMemberIdAndPostId(memberId, postId);
 
         if(postLike != null) {

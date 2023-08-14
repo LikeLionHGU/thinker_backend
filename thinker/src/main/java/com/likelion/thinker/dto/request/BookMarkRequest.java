@@ -7,10 +7,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MemberRequest {
-    private Long memberId;
+public class BookMarkRequest {
+    private String url;
 
-    private String name;
-
-    private String email;
+    private String title;
 }

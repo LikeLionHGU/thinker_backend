@@ -22,7 +22,7 @@ public class PostService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public Long addPost(String memberId, PostDto postDto) {
+    public Long addPost(Long memberId, PostDto postDto) {
         Post post = postRepository.save(Post.addPost(postDto, memberRepository.findByMemberId(memberId)));
 
         return post.getPostId();

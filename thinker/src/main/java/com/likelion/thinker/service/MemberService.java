@@ -9,6 +9,8 @@ import lombok.Setter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Getter
 @Setter
@@ -17,14 +19,14 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public String addUser(MemberDto memberDto) {
+    public Long addUser(MemberDto memberDto) {
         Member member = memberRepository.save(Member.toAdd(memberDto));
 
         return member.getMemberId();
     }
 
     @Transactional
-    public MemberDto getUser(String userId) {
+    public MemberDto getUser(Long userId) {
         Member member = memberRepository.findByMemberId(userId);
         MemberDto memberDto = MemberDto.toResponse(member);
 

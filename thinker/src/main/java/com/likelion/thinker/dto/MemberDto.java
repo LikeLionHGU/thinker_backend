@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Setter
 @Builder
 public class MemberDto {
-    private String memberId;
+    private Long memberId;
 
     private String name;
 
@@ -27,6 +27,8 @@ public class MemberDto {
     private List<PostDto> postDtoList;
 
     private List<CommentDto> commentDtoList;
+
+    private List<BookMarkDto> bookMarkDtoList;
 
     public static MemberDto toPostResponse(Member member) {
         return MemberDto.builder()
@@ -63,6 +65,7 @@ public class MemberDto {
                 .postDtoList(member.getPostList().stream().map(PostDto::toMemberResponse).collect(Collectors.toList()))
                 .postLikeDtoList(member.getPostLikeList().stream().map(PostLikeDto::toMemberResponse).collect(Collectors.toList()))
                 .commentDtoList(member.getCommentList().stream().map(CommentDto::toMemberResponse).collect(Collectors.toList()))
+                .bookMarkDtoList(member.getBookMarkList().stream().map(BookMarkDto::toResponse).collect(Collectors.toList()))
                 .build();
 
     }

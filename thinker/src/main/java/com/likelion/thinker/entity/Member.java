@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Member {
     @Id
-    private String memberId;
+    private Long memberId;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<PostLike> postLikeList = new ArrayList<>();
@@ -28,6 +28,9 @@ public class Member {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Comment> commentList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<BookMark> bookMarkList = new ArrayList<>();
 
     private String name;
 
