@@ -34,13 +34,16 @@ public class Member {
 
     private String name;
 
+    private String nickname;
+
     private String email;
 
-    public static Member toAdd(MemberDto memberDto) {
+    public static Member toAdd(MemberDto memberDto, String nickname) {
         return Member.builder()
                 .memberId(memberDto.getMemberId())
                 .name(memberDto.getName())
                 .email(memberDto.getEmail())
+                .nickname(nickname)
                 .build();
     }
 }

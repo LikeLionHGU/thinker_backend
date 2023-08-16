@@ -15,11 +15,14 @@ public class MemberByPostResponse {
 
     private String email;
 
+    private String nickname;
+
     public static MemberByPostResponse toMemberByPostResponse(MemberDto memberDto) {
         return MemberByPostResponse.builder()
                 .memberId(memberDto.getMemberId())
                 .name(memberDto.getName())
                 .email(memberDto.getEmail())
+                .nickname(memberDto.getNickname())
                 .build();
     }
 }

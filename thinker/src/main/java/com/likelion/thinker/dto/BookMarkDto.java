@@ -41,6 +41,7 @@ public class BookMarkDto {
         return BookMarkDto.builder()
                 .url(bookMark.getUrl())
                 .title(bookMark.getTitle())
+                .fileUrl(bookMark.getFileUrl())
                 .build();
     }
 }

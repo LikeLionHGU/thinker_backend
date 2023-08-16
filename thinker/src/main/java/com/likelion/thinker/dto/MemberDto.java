@@ -18,6 +18,8 @@ public class MemberDto {
 
     private String name;
 
+    private String nickname;
+
     private String email;
 
     private List<PostLikeDto> postLikeDtoList;
@@ -35,6 +37,7 @@ public class MemberDto {
                 .memberId(member.getMemberId())
                 .name(member.getName())
                 .email(member.getEmail())
+                .nickname(member.getNickname())
                 .build();
     }
 
@@ -62,6 +65,7 @@ public class MemberDto {
                 .memberId(member.getMemberId())
                 .email(member.getEmail())
                 .name(member.getName())
+                .nickname(member.getNickname())
                 .postDtoList(member.getPostList().stream().map(PostDto::toMemberResponse).collect(Collectors.toList()))
                 .postLikeDtoList(member.getPostLikeList().stream().map(PostLikeDto::toMemberResponse).collect(Collectors.toList()))
                 .commentDtoList(member.getCommentList().stream().map(CommentDto::toMemberResponse).collect(Collectors.toList()))

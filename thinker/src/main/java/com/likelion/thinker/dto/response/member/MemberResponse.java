@@ -22,6 +22,8 @@ public class MemberResponse {
 
     private String email;
 
+    private String nickname;
+
     private List<PostByMemberResponse> postList;
 
     private List<PostLikeByMemberResponse> postLikeList;
@@ -34,6 +36,7 @@ public class MemberResponse {
         return MemberResponse.builder()
                 .memberId(memberDto.getMemberId())
                 .email(memberDto.getEmail())
+                .nickname(memberDto.getNickname())
                 .name(memberDto.getName())
                 .postList(memberDto.getPostDtoList().stream().map(PostByMemberResponse::toPostByMemberResponse).collect(Collectors.toList()))
                 .postLikeList(memberDto.getPostLikeDtoList().stream().map(PostLikeByMemberResponse::toPostLikeByMemberResponse).collect(Collectors.toList()))

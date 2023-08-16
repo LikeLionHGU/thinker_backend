@@ -31,8 +31,7 @@ public class BookMarkService {
     @Value("${cloud.secretKey}")
     private String secretKey;
 
-    @Value("{cloud.endPoint}")
-    private String endPoint;
+    private String endPoint = "https://kr.object.ncloudstorage.com";
 
     private final AmazonS3 amazonS3;
 

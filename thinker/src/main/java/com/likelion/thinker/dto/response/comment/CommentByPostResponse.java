@@ -20,6 +20,8 @@ public class CommentByPostResponse {
 
     private String memberName;
 
+    private String nickname;
+
     private Long memberId;
 
     public static CommentByPostResponse toCommentByPostResponse(CommentDto commentDto) {
@@ -30,6 +32,7 @@ public class CommentByPostResponse {
                 .isLiked(commentDto.getIsLiked())
                 .memberId(commentDto.getMemberDto().getMemberId())
                 .memberName(commentDto.getMemberDto().getName())
+                .nickname(commentDto.getMemberDto().getNickname())
                 .build();
     }
 }
