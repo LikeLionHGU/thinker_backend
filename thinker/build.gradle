@@ -24,6 +24,12 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	implementation 'com.amazonaws:aws-java-sdk-s3:1.11.238'
+
+	// JAXB API
+	implementation 'javax.xml.bind:jaxb-api:2.3.1'
+// JAXB Implementation
+	implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
+
 }
 
 tasks.named('test') {

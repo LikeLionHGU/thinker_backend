@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/keywords")
+@CrossOrigin(origins = "*")
 public class KeywordController {
     private final KeywordService keywordService;
     private final TodayKeywordService todayKeywordService;

@@ -12,11 +12,12 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/bookmark")
+@CrossOrigin(origins = "*")
 public class BookMarkController {
     private final BookMarkService bookMarkService;
 
     @PostMapping("/add/{userId}")
-    public ResponseEntity<String> addBookMark(@PathVariable Long userId, @RequestBody BookMarkRequest bookMarkRequest, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> addBookMark(@PathVariable Long userId, @RequestPart("content") BookMarkRequest bookMarkRequest, @RequestParam("file") MultipartFile file) {
         String responseId = bookMarkService.addBookMark(BookMarkDto.toBookMarkDto(bookMarkRequest, userId, file));
 
         return ResponseEntity.ok(responseId);

@@ -21,14 +21,17 @@ public class BookMark {
 
     private String title;
 
+    private String fileUrl;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
-    public static BookMark toBookMark(BookMarkDto bookMarkDto, Member member) {
+    public static BookMark toBookMark(BookMarkDto bookMarkDto, Member member, String fileUrl) {
         return BookMark.builder()
                 .url(bookMarkDto.getUrl())
                 .title(bookMarkDto.getTitle())
                 .member(member)
+                .fileUrl(fileUrl)
                 .build();
     }
 }

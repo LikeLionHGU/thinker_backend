@@ -18,12 +18,18 @@ public class CommentByPostResponse {
 
     private Boolean isLiked;
 
+    private String memberName;
+
+    private Long memberId;
+
     public static CommentByPostResponse toCommentByPostResponse(CommentDto commentDto) {
         return CommentByPostResponse.builder()
                 .commentId(commentDto.getCommentId())
                 .commentLikeCount(commentDto.getCommentLikeDtoList().size())
                 .content(commentDto.getContent())
                 .isLiked(commentDto.getIsLiked())
+                .memberId(commentDto.getMemberDto().getMemberId())
+                .memberName(commentDto.getMemberDto().getName())
                 .build();
     }
 }

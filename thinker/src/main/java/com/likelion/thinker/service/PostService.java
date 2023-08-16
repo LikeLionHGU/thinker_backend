@@ -30,9 +30,15 @@ public class PostService {
 
     @Transactional
     public Long addPost(Long memberId, PostDto postDto) {
-        Post post = postRepository.save(Post.addPost(postDto, memberRepository.findByMemberId(memberId)));
+        Member member = memberRepository.findByMemberId(memberId);
 
-        return post.getPostId();
+        if(member != null) {
+            Post post = postRepository.save(Post.addPost(postDto, memberRepository.findByMemberId(memberId)));
+
+            return post.getPostId();
+        } else {
+            return null;
+        }
     }
 
     @Transactional

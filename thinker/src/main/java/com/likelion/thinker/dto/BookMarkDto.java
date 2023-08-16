@@ -19,6 +19,8 @@ public class BookMarkDto {
 
     private MultipartFile file;
 
+    private String fileUrl;
+
     public static BookMarkDto toBookMarkDto(BookMarkRequest bookMarkRequest, Long userId, MultipartFile file) {
         return BookMarkDto.builder()
                 .url(bookMarkRequest.getUrl())
