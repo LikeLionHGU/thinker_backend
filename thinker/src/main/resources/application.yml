@@ -15,7 +15,7 @@ aws:
   endPoint: https://kr.object.ncloudstorage.com
   accessKey: 5J163mI2bsCGa5iNJz5Q
   secretKey: ZJezzfjeO4DrKn7jhUCO6QwNFfI82weUw4QCrjFf
-  bucketName: thinkey
+  bucketName: thinkeytest
 
 
 
