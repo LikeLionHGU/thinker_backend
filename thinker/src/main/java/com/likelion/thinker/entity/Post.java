@@ -42,6 +42,9 @@ public class Post {
 
     private String content;
 
+    @Transient
+    private Boolean isLike;
+
     public static Post addPost(PostDto postDto, Member member) {
         return Post.builder()
                 .member(member)

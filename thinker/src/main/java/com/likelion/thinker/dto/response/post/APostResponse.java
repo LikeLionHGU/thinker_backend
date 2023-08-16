@@ -30,6 +30,8 @@ public class APostResponse {
 
     private List<CommentByPostResponse> commentList;
 
+    private Boolean isLiked;
+
     public static APostResponse toResponse(PostDto postDto) {
         return APostResponse.builder()
                 .postId(postDto.getPostId())
@@ -39,6 +41,7 @@ public class APostResponse {
                 .date(postDto.getDate())
                 .postLikeCount(postDto.getTotalPostLikeCount())
                 .commentList(postDto.getCommentList().stream().map(CommentByPostResponse::toCommentByPostResponse).collect(Collectors.toList()))
+                .isLiked(postDto.getIsLiked())
                 .build();
     }
 }

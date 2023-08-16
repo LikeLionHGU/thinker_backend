@@ -28,6 +28,9 @@ public class Comment {
     @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL)
     private List<CommentLike> commentLikeList = new ArrayList<CommentLike>();
 
+    @Transient
+    private Boolean isLiked;
+
     private String content;
 
     public static Comment toAdd(CommentDto commentDto, Member member, Post post) {

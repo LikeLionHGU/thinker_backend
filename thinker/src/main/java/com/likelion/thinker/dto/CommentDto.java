@@ -24,6 +24,8 @@ public class CommentDto {
 
     private String content;
 
+    private Boolean isLiked;
+
     public static CommentDto toResponse(Comment comment) {
         return CommentDto.builder()
                 .content(comment.getContent())

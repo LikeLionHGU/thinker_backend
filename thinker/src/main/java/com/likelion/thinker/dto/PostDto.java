@@ -33,10 +33,26 @@ public class PostDto {
 
     private List<CommentDto> commentList;
 
+    private Boolean isLiked;
+
     public static PostDto toAdd(PostRequest postRequest) {
         return PostDto.builder()
                 .content(postRequest.getContent())
                 .title(postRequest.getTitle())
+                .build();
+    }
+
+    public static PostDto toResponse(Post post, Boolean isLiked) {
+        return PostDto.builder()
+                .postId(post.getPostId())
+                .title(post.getTitle())
+                .content(post.getContent())
+                .date(post.getDate())
+                .totalPostLikeCount(post.getPostLikeList().size())
+                .memberDto(MemberDto.toPostResponse(post.getMember()))
+                .postLikeList(post.getPostLikeList().stream().map(PostLikeDto::toResponse).collect(Collectors.toList()))
+                .commentList(post.getCommentList().stream().map(CommentDto::toResponse).collect(Collectors.toList()))
+                .isLiked(isLiked)
                 .build();
     }
 
@@ -50,6 +66,7 @@ public class PostDto {
                 .memberDto(MemberDto.toPostResponse(post.getMember()))
                 .postLikeList(post.getPostLikeList().stream().map(PostLikeDto::toResponse).collect(Collectors.toList()))
                 .commentList(post.getCommentList().stream().map(CommentDto::toResponse).collect(Collectors.toList()))
+                .isLiked(post.getIsLike())
                 .build();
     }
 

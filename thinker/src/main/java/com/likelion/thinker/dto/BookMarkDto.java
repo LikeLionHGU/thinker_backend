@@ -3,6 +3,7 @@ package com.likelion.thinker.dto;
 import com.likelion.thinker.dto.request.BookMarkRequest;
 import com.likelion.thinker.entity.BookMark;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -16,11 +17,14 @@ public class BookMarkDto {
 
     private Long userId;
 
-    public static BookMarkDto toBookMarkDto(BookMarkRequest bookMarkRequest, Long userId) {
+    private MultipartFile file;
+
+    public static BookMarkDto toBookMarkDto(BookMarkRequest bookMarkRequest, Long userId, MultipartFile file) {
         return BookMarkDto.builder()
                 .url(bookMarkRequest.getUrl())
                 .title(bookMarkRequest.getTitle())
                 .userId(userId)
+                .file(file)
                 .build();
     }
 

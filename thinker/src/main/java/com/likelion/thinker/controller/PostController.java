@@ -27,17 +27,17 @@ public class PostController {
         return ResponseEntity.ok(postId);
     }
 
-    @GetMapping
-    public ResponseEntity<List<AllPostResponse>> getAllPost() {
-        List<PostDto> postDtoList = postService.getAllPost();
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<AllPostResponse>> getAllPost(@PathVariable Long userId) {
+        List<PostDto> postDtoList = postService.getAllPost(userId);
         List<AllPostResponse> allPostResponseList = postDtoList.stream().map(AllPostResponse::toResponse).collect(Collectors.toList());
 
         return ResponseEntity.ok(allPostResponseList);
     }
 
-    @GetMapping("/{postId}")
-    public ResponseEntity<APostResponse> getOnePost(@PathVariable Long postId) {
-        PostDto postDto = postService.getPost(postId);
+    @GetMapping("/{postId}/{userId}")
+    public ResponseEntity<APostResponse> getOnePost(@PathVariable Long postId, @PathVariable Long userId) {
+        PostDto postDto = postService.getPost(postId, userId);
         APostResponse aPostResponse = APostResponse.toResponse(postDto);
 
         return ResponseEntity.ok(aPostResponse);

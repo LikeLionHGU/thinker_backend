@@ -27,6 +27,8 @@ public class AllPostResponse {
 
     private Integer postLikeCount;
 
+    private Boolean isLiked;
+
     public static AllPostResponse toResponse(PostDto postDto) {
         return AllPostResponse.builder()
                 .postId(postDto.getPostId())
@@ -35,6 +37,7 @@ public class AllPostResponse {
                 .date(postDto.getDate())
                 .member(MemberByPostResponse.toMemberByPostResponse(postDto.getMemberDto()))
                 .postLikeCount(postDto.getTotalPostLikeCount())
+                .isLiked(postDto.getIsLiked())
                 .build();
     }
 }

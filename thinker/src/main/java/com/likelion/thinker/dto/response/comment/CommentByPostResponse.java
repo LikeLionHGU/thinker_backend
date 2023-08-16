@@ -16,11 +16,14 @@ public class CommentByPostResponse {
 
     private String content;
 
+    private Boolean isLiked;
+
     public static CommentByPostResponse toCommentByPostResponse(CommentDto commentDto) {
         return CommentByPostResponse.builder()
                 .commentId(commentDto.getCommentId())
                 .commentLikeCount(commentDto.getCommentLikeDtoList().size())
                 .content(commentDto.getContent())
+                .isLiked(commentDto.getIsLiked())
                 .build();
     }
 }

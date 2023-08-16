@@ -20,9 +20,15 @@ public class MemberService {
 
     @Transactional
     public Long addUser(MemberDto memberDto) {
-        Member member = memberRepository.save(Member.toAdd(memberDto));
+        Member tempMember = memberRepository.findByMemberId(memberDto.getMemberId());
 
-        return member.getMemberId();
+        if(tempMember == null) {
+            Member member = memberRepository.save(Member.toAdd(memberDto));
+
+            return member.getMemberId();
+        } else {
+            return null;
+        }
     }
 
     @Transactional
